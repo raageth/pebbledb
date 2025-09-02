@@ -1,8 +1,8 @@
-#include "db.h"
+#include "pebbledb.h"
 #include <iostream>
 
 int main() {
-    DB db("data");
+    PebbleDB db("data");
 
     db.put("a", "apple");
     db.put("b", "banana");
