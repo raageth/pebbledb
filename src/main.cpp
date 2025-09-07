@@ -2,16 +2,27 @@
 #include <iostream>
 
 int main() {
-    PebbleDB db("data");
+    {
+        PebbleDB db("data");
+        db.put("a", "apple");
+        db.put("b", "banana");
+        db.put("c", "carrot");
 
-    db.put("a", "apple");
-    db.put("b", "banana");
+        std::cout << "a: " << db.get("a") << "\n";
+        std::cout << "b: " << db.get("b") << "\n";
+        std::cout << "c: " << db.get("c") << "\n";
 
-    std::cout << "a: " << db.get("a") << "\n";
-    std::cout << "b: " << db.get("b") << "\n";
+        db.remove("b");
+        std::cout << "b after delete: " << db.get("b") << "\n";
+    }
 
-    db.remove("a");
-    std::cout << "a after delete: " << db.get("a") << "\n";
+    {
+        PebbleDB db("data");
+        std::cout << "\nAfter reopening DB:\n";
+        std::cout << "a: " << db.get("a") << "\n";
+        std::cout << "b: " << db.get("b") << "\n";
+        std::cout << "c: " << db.get("c") << "\n";
+    }
 
     return 0;
 }

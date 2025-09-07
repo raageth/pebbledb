@@ -20,3 +20,11 @@ bool MemTable::contains(const std::string& key) const {
     auto it = table.find(key);
     return it != table.end();
 }
+
+size_t MemTable::size() const {
+    return table.size();
+}
+
+const std::map<std::string, std::string>& MemTable::getTable() const {
+    return table;
+}
